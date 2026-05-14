@@ -2,12 +2,12 @@
     --primary: #6366f1;
     --secondary: #f59e0b;
     --accent: #10b981;
-    --background: #0f172a;
-    --surface: rgba(30, 41, 59, 0.7);
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-    --glass: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --background: #dbeafe;
+    --surface: rgba(255, 255, 255, 0.9);
+    --text: #10233f;
+    --text-muted: #475569;
+    --glass: rgba(255, 255, 255, 0.82);
+    --glass-border: rgba(37, 99, 235, 0.18);
     --font-main: 'Outfit', sans-serif;
 }
 
@@ -39,7 +39,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85));
+    background-image: linear-gradient(rgba(219, 234, 254, 0.88), rgba(240, 253, 250, 0.92));
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -47,15 +47,15 @@ body {
 }
 
 .glass-card {
-    background: rgba(15, 23, 42, 0.75);
+    background: var(--surface);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 28px;
     padding: 2rem;
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        0 18px 36px rgba(30, 64, 175, 0.18),
+        inset 0 1px 1px rgba(255, 255, 255, 0.65);
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -71,7 +71,7 @@ header {
     font-size: 1.8rem;
     font-weight: 900;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+    background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: flex;
@@ -99,7 +99,7 @@ button {
     border-radius: 16px;
     font-weight: 700;
     box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.18);
 }
 
 .btn-primary:hover {
@@ -108,9 +108,9 @@ button {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--text);
     padding: 12px 24px;
     border-radius: 14px;
     font-weight: 600;
@@ -118,7 +118,7 @@ button {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(219, 234, 254, 0.95);
     transform: translateY(-2px);
 }
 
@@ -134,21 +134,21 @@ button {
     margin-bottom: 1rem;
     line-height: 1;
     letter-spacing: -2px;
-    background: linear-gradient(to bottom, #ffffff 0%, #cbd5e1 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #047857 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.8));
+    filter: drop-shadow(0px 3px 6px rgba(255,255,255,0.9));
 }
 
 .hero-subtitle {
     font-size: 1.4rem;
-    color: #f8fafc;
+    color: #1e293b;
     margin-bottom: 4rem;
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 500;
-    text-shadow: 0px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 0px 2px 6px rgba(255,255,255,0.8);
 }
 
 .mission-grid {
@@ -172,8 +172,8 @@ button {
 .mission-card:hover {
     transform: rotateX(10deg) rotateY(-5deg) translateY(-10px);
     border-color: rgba(99, 102, 241, 0.8);
-    background: rgba(15, 23, 42, 0.85);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.22);
 }
 
 .mission-card img {
@@ -261,12 +261,13 @@ button {
     background: var(--glass);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    color: white;
+    color: var(--text);
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .option-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(219, 234, 254, 0.95);
     border-color: var(--primary);
 }
 
@@ -300,4 +301,142 @@ button {
 ::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: 4px;
+}
+
+
+.mission-card h3 {
+    color: #0f172a;
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.mission-card p,
+.activity-shell p {
+    color: #334155;
+    line-height: 1.5;
+}
+
+.activity-shell {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+.compass-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 1rem;
+    background: radial-gradient(circle, #eff6ff 0%, #bfdbfe 100%);
+    border-radius: 50%;
+    border: 5px solid var(--primary);
+    box-shadow: inset 0 0 35px rgba(37, 99, 235, 0.16);
+}
+
+.compass-point {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1e3a8a;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border: 2px solid rgba(37, 99, 235, 0.28);
+    box-shadow: 0 8px 18px rgba(30, 64, 175, 0.18);
+}
+
+.compass-point:hover {
+    transform: scale(1.08);
+    background: #dbeafe;
+}
+
+.compass-point.north { top: 8px; left: 50%; transform: translateX(-50%); }
+.compass-point.south { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.compass-point.east { right: 8px; top: 50%; transform: translateY(-50%); }
+.compass-point.west { left: 8px; top: 50%; transform: translateY(-50%); }
+
+.needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 108px;
+    background: #dc2626;
+    border-radius: 999px;
+    transform: translate(-50%, -100%);
+}
+
+.compass-center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+}
+
+.hint {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.question-text {
+    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.result-card h2 {
+    color: #0f172a;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.result-card p {
+    color: #334155;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.result-card img {
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.score-summary {
+    background: #eff6ff;
+    border-radius: 20px;
+    color: #0f172a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mb-4 { margin-bottom: 1.5rem; }
+.mt-4 { margin-top: 1.5rem; }
+.text-center { text-align: center; }
+
+@media (max-width: 680px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .compass-container {
+        width: 240px;
+        height: 240px;
+    }
 }
