@@ -120,6 +120,99 @@ function showScreen(screenId) {
     });
 }
 
+function startMission(missionKey) {
+    currentMission = missionKey;
+    const mission = missions[missionKey];
+    document.getElementById('mission-title').innerText = mission.title;
+    document.getElementById('game-content').innerHTML = mission.content;
+    document.getElementById('feedback').innerText = '';
+    
+    if (missionKey === 'final') {
+        finalQuestionIndex = 0;
+        loadFinalQuestion();
+    }
+    
+    showScreen('game-screen');
+}
+
+function loadFinalQuestion() {
+    const qData = finalQuestions[finalQuestionIndex];
+    document.getElementById('question-text').innerText = qData.q;
+    const optionsBox = document.getElementById('options-box');
+    optionsBox.innerHTML = '';
+    
+    qData.options.forEach((opt, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => checkFinalAnswer(index);
+        optionsBox.appendChild(btn);
+    });
+}
+
+function checkFinalAnswer(selectedIndex) {
+    const qData = finalQuestions[finalQuestionIndex];
+    const btns = document.querySelectorAll('#options-box .option-btn');
+    
+    if (selectedIndex === qData.correct) {
+        btns[selectedIndex].classList.add('correct');
+        updateScore(50);
+        document.getElementById('feedback').innerText = '¡Excelente! Siguiente pregunta...';
+        document.getElementById('feedback').style.color = '#10b981'; // accent color
+        
+        setTimeout(() => {
+            finalQuestionIndex++;
+            if (finalQuestionIndex < finalQuestions.length) {
+                loadFinalQuestion();
+                document.getElementById('feedback').innerText = '';
+            } else {
+                finishGame();
+            }
+        }, 1500);
+    } else {
+        btns[selectedIndex].classList.add('wrong');
+        document.getElementById('feedback').innerText = '¡Casi! Inténtalo de nuevo.';
+        document.getElementById('feedback').style.color = '#ef4444';
+    }
+}
+
+function checkAnswer(isCorrect, type) {
+    const feedback = document.getElementById('feedback');
+    if (isCorrect) {
+        feedback.innerText = '¡FANTÁSTICO! Misión cumplida. +20 puntos';
+        feedback.style.color = '#10b981'; // accent color
+        updateScore(20);
+        setTimeout(() => showScreen('main-screen'), 2000);
+    } else {
+        feedback.innerText = '¡Oh no! Prueba otra vez, tú puedes.';
+        feedback.style.color = '#ef4444';
+    }
+}
+
+function updateScore(points) {
+    currentScore += points;
+    document.getElementById('score').innerText = currentScore;
+    
+    // Animation effect
+    const scoreEl = document.getElementById('score');
+    gsap.fromTo(scoreEl, { scale: 1.5 }, { scale: 1, duration: 0.3, ease: "back.out(2)" });
+}
+
+function finishGame() {
+    document.getElementById('game-content').innerHTML = `
+        <div class="text-center fade-in">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">🏆 ¡MISIÓN CUMPLIDA!</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Has completado tu entrenamiento de Explorador Planetario.</p>
+            <img src="assets/img/mascot.png" style="width: 200px; border-radius: 50%; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" alt="Explorador">
+            <div class="glass-card" style="padding: 2rem; margin-bottom: 2rem;">
+                <h3 style="color: white;">Puntuación Total: ${currentScore} puntos</h3>
+            </div>
+            <button class="btn-primary" onclick="location.reload()">Jugar de nuevo</button>
+        </div>
+    `;
+    document.getElementById('feedback').innerText = '';
+}
+
 // Initial state
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hero-bg').style.backgroundImage = 'url("assets/img/hero.png")';
