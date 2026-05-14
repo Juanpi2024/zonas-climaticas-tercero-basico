@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión Tierra: Exploradores del Planeta | 3ro Básico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta name="description" content="Una aplicación interactiva para aprender sobre geografía, líneas de referencia y zonas climáticas para 3ro básico.">
+    <!-- GSAP for premium animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <div class="bg-hero" id="hero-bg"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🌍</span>
+                <span>MISIÓN TIERRA</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="showScreen('main-screen')">Inicio</button>
+                <div id="user-points" class="glass-card" style="padding: 10px 20px; border-radius: 50px; margin-left: 10px;">
+                    ⭐ <span id="score">0</span> pts
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Pantalla Principal -->
+            <section id="main-screen" class="fade-in">
+                <h1 class="hero-title">¡Hola, Pequeño Explorador!</h1>
+                <p class="hero-subtitle">Tu misión es descubrir los secretos de nuestro planeta. ¿Estás listo para el despegue?</p>
+                
+                <div class="mission-grid">
+                    <div class="glass-card mission-card" onclick="startMission('cardinals')">
+                        <div class="mission-tag">Misión 1</div>
+                        <img src="https://images.unsplash.com/photo-1532154332467-33a75878491c?auto=format&fit=crop&q=80&w=800" alt="Brújula">
+                        <h3>Puntos Cardinales</h3>
+                        <p>Aprende a orientarte con la brújula mágica.</p>
+                    </div>
+
+                    <div class="glass-card mission-card" onclick="startMission('lines')">
+                        <div class="mission-tag">Misión 2</div>
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Líneas Imaginarias">
+                        <h3>Líneas de Referencia</h3>
+                        <p>Descubre el Ecuador y los meridianos ocultos.</p>
+                    </div>
+
+                    <div class="glass-card mission-card" onclick="startMission('continents')">
+                        <div class="mission-tag">Misión 3</div>
+                        <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&q=80&w=800" alt="Continentes">
+                        <h3>Continentes y Océanos</h3>
+                        <p>Viaja por todo el mundo sin salir de casa.</p>
+                    </div>
+
+                    <div class="glass-card mission-card" onclick="startMission('climates')">
+                        <div class="mission-tag">Misión 4</div>
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=800" alt="Climas">
+                        <h3>Zonas Climáticas</h3>
+                        <p>¿Frío o calor? Descubre los climas de la Tierra.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <button class="btn-primary" style="font-size: 1.5rem; padding: 20px 50px;" onclick="startMission('final')">🚀 EXAMEN FINAL</button>
+                </div>
+            </section>
+
+            <!-- Pantalla de Juego -->
+            <section id="game-screen">
+                <div class="glass-card">
+                    <div class="game-header">
+                        <h2 id="mission-title">Título de la Misión</h2>
+                        <button class="btn-secondary" onclick="showScreen('main-screen')">Cerrar</button>
+                    </div>
+                    <div id="game-content" class="game-content">
+                        <!-- El contenido se inyectará dinámicamente -->
+                    </div>
+                    <div id="feedback" style="margin-top: 2rem; font-weight: 600; text-align: center;"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
