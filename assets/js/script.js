@@ -215,7 +215,7 @@ function finishGame() {
 
 // Initial state
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('hero-bg').style.backgroundImage = 'url("assets/img/hero.png")';
+    document.getElementById('hero-bg').style.backgroundImage = 'linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), url("assets/img/hero.png")';
     
     // Initial entrance animation
     gsap.from('.hero-title', { opacity: 0, y: -50, duration: 1, ease: "power4.out" });
